@@ -32,8 +32,10 @@ Passwords are hashed with bcrypt and excluded from response serialization. JWTs 
 
 ## Verification and submission notes
 
-Run `npm test` for the automated API checks. The Postman collection includes success, validation, authentication, ownership, and rate-limit scenarios. A real local Newman run against the Atlas-backed API is summarized in `execution-summary.md` (20 requests, 23 assertions, no failures). The manual rate-limit request was not repeated to trigger 429. Capture the required Postman UI screenshots separately.
+Run `npm test` for the automated API checks (15 checks passed). The Postman collection includes success, validation, authentication, ownership, and rate-limit scenarios. A real Postman desktop run on October 19, 2026 passed 23 assertions across 20 requests with no failures. A subsequent Postman request returned 429 after additional login attempts exhausted the authentication limit. Another programmatic HTTP run passed 24 checks covering ownership in both directions, invalid/expired JWTs, employee validation, and Helmet headers. Local evidence is in the accompanying evidence document and screenshots. Vercel deployment and MongoDB Atlas interface screenshots remain outstanding.
 
 For Vercel, set `MONGODB_URI`, `JWT_SECRET`, `JWT_EXPIRES_IN`, and `NODE_ENV` in project environment settings, then deploy. `vercel.json` routes requests to the serverless entry point. Do not publish database credentials.
 
-Create a public GitHub repository using the course's required name `101465282_COMP3123_Assignment1`. Use meaningful incremental commits. Before creating the ZIP, remove `node_modules`; include the source, README, `.env.example`, `.gitignore`, `vercel.json`, and Postman collection. Add real screenshots and the deployed URL after completing those account-dependent steps.
+Public repository: https://github.com/ethanhakaj3515/101465282_COMP3123_Assignment1
+
+The source ZIP excludes `node_modules` and credentials. Supply the accompanying evidence document and add the deployed URL after hosting is complete. No D2L submission has been made.
