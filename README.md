@@ -32,10 +32,10 @@ Passwords are hashed with bcrypt and excluded from response serialization. JWTs 
 
 ## Verification and submission notes
 
-Run `npm test` for the automated API checks (15 checks passed). The Postman collection includes success, validation, authentication, ownership, and rate-limit scenarios. A real Postman desktop run on October 19, 2026 passed 23 assertions across 20 requests with no failures. A subsequent Postman request returned 429 after additional login attempts exhausted the authentication limit. Another programmatic HTTP run passed 24 checks covering ownership in both directions, invalid/expired JWTs, employee validation, and Helmet headers. Local evidence is in the accompanying evidence document and screenshots. Vercel deployment and MongoDB Atlas interface screenshots remain outstanding.
+Run `npm test` for the automated API checks (15 checks passed). The Postman collection includes success, validation, authentication, ownership, and rate-limit scenarios. A real Postman desktop run on October 19, 2026 passed 23 assertions across 20 requests with no failures. A subsequent Postman request returned 429 after additional login attempts exhausted the authentication limit. Another programmatic HTTP run passed 24 checks covering ownership in both directions, invalid/expired JWTs, employee validation, and Helmet headers. A hosted synthetic-account HTTP run against Vercel passed 7 checks: signup, login, employee create, list, read, update, and delete. The deployed health route returned HTTP 200. Atlas network access was configured for the course API. Evidence is in `outputs/assignment-evidence` and the accompanying evidence document.
 
-For Vercel, set `MONGODB_URI`, `JWT_SECRET`, `JWT_EXPIRES_IN`, and `NODE_ENV` in project environment settings, then deploy. `vercel.json` routes requests to the serverless entry point. Do not publish database credentials.
+The API is deployed at https://101465282-comp-3123-assignment1.vercel.app. `vercel.json` routes requests to the serverless entry point. Deployment settings contain `MONGODB_URI`, `JWT_SECRET`, `JWT_EXPIRES_IN`, and `NODE_ENV`; do not publish database credentials. Atlas currently has a `0.0.0.0/0` network access entry for the course API to permit Vercel connections.
 
 Public repository: https://github.com/ethanhakaj3515/101465282_COMP3123_Assignment1
 
-The source ZIP excludes `node_modules` and credentials. Supply the accompanying evidence document and add the deployed URL after hosting is complete. No D2L submission has been made.
+The source ZIP excludes `node_modules` and credentials. Supply the accompanying evidence document and screenshots with the source ZIP. No D2L submission has been made.

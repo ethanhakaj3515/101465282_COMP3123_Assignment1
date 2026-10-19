@@ -29,3 +29,7 @@ Executed the saved Postman collection with Newman against the API running locall
 | Repeat login 11 times to observe 429 | HTTP 401 | 1/1 PASS |
 
 The collection covers health, signup/login validation, missing authentication, employee create/read/update/delete, invalid IDs, and cross-user access isolation. The separate manual rate-limit scenario is documented in the collection; this run made one request for that scenario and did not repeat it to trigger `429`.
+
+## Live Vercel verification — October 19, 2026
+
+The deployed health route `GET https://101465282-comp-3123-assignment1.vercel.app/health` returned HTTP 200. A separate synthetic-account HTTP run against the hosted API passed all 7 checks: signup (201), login (200), employee create (201), list (200), read (200), update (200), and delete (204). No access token, password, or request body is included in this report. The live health screenshot is in `outputs/assignment-evidence`. Atlas showed the access-list entry as active; its screenshot was omitted because the page also displayed an unrelated home network address.
