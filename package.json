@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "description": "Secure employee REST API for COMP3123 Assignment 1",
-  "main": "api/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node api/index.js",
-    "dev": "nodemon api/index.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "jest --runInBand",
     "test:watch": "jest --watch"
   },
