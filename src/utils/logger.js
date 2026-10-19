@@ -2,11 +2,15 @@ const fs = require('fs');
 const path = require('path');
 
 const logDir = process.env.LOG_DIR || path.join(process.cwd(), 'logs');
-if (process.env.NODE_ENV !== 'test') fs.mkdirSync(logDir, { recursive: true });
+let fileLoggingEnabled = process.env.NODE_ENV !== 'test' && !process.env.VERCEL;
+if (fileLoggingEnabled) {
+  try { fs.mkdirSync(logDir, { recursive: true }); }
+  catch { fileLoggingEnabled = false; }
+}
 
 function write(level, event, details = {}) {
   const record = JSON.stringify({ timestamp: new Date().toISOString(), level, event, ...details }) + '\n';
-  if (process.env.NODE_ENV !== 'test') {
+  if (fileLoggingEnabled) {
     try { fs.appendFileSync(path.join(logDir, 'app.log'), record); } catch { /* serverless filesystem may be read-only */ }
   }
   if (level === 'error') console.error(record.trim());
